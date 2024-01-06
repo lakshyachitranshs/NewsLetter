@@ -30,10 +30,11 @@ li
 }
 
 .infoArea {
-    padding-top: 6em;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding: 20px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     transition: all 2s ease-in-out;
 }
 
@@ -129,8 +130,9 @@ li
 }
 
 .svgInfo img{
-    max-height: 100%;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .successMessage {
@@ -179,6 +181,24 @@ li
     background-color: rgb(247, 101, 101);
 }
 
-@media screen {
+@media all and (max-width:400px) {
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+    .container{
+        display: flex;
+        flex-direction: column-reverse;
+        border-radius: 0px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .infoArea{
+        margin: 0px;
+    }
+    .infoArea h1{
+        font-size: 40px;
+    }
+    
     
 }

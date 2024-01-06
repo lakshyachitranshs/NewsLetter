@@ -37,7 +37,7 @@
     </div>
 
     <div class="svgInfo">
-      <img src="assets/images/illustration-sign-up-desktop.svg" alt="">
+      <img src="assets/images/illustration-sign-up-desktop.svg" id="svgimg" alt="">
     </div>
     
   </div>
@@ -61,6 +61,7 @@
 
   <!-- Success message end -->
   <script>
+    let svgimg = document.getElementById('svgimg');
     let container = document.querySelector('.container');
     let successMessage = document.querySelector('.successMessage');
     let subs = document.querySelector('.subs');
@@ -69,6 +70,7 @@
     let emailInput = document.querySelector('input[type="email"]');
     let errorMessage = document.createElement('div');
     let emailLabel = document.getElementById('emailLabel');
+    
   
     // Event listeners
     subs.addEventListener('click', validateAndDisplayThanksMsg);
@@ -137,6 +139,25 @@
       errorMessage.style.fontWeight = 'bold';
       form[0].insertBefore(errorMessage, emailLabel.nextSibling);
     }
+    function handleMediaQuery(mq) {
+      var responsiveImage = document.getElementById('svgimg');
+
+      if (mq.matches) {
+        // Change the image source for small screens
+        responsiveImage.src = 'assets/images/illustration-sign-up-mobile.svg';
+      } else {
+        // Restore the default image source for larger screens
+        responsiveImage.src = 'assets/images/illustration-sign-up-desktop.svg';
+      }
+      console.log('hello')
+    }
+
+    // Check media query on page load
+    var mediaQuery = window.matchMedia('(max-width: 400px)');
+    handleMediaQuery(mediaQuery);
+
+    // Add event listener for changes in media query
+    mediaQuery.addListener(handleMediaQuery);
   </script>
   
   
