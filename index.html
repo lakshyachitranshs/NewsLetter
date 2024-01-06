@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <!-- Sign-up form start -->
+
+  <div class="container">
+    <div class="infoArea">
+      <h1>Stay updated!</h1>
+      <p>Join 60,000+ product managers receiving monthly updates on:</p>
+      <ul>
+        <li>Product discovery and building what matters</li>
+        <li>Measuring to ensure updates are a success</li>
+        <li>And much more!</li>
+      </ul>
+      <div class="form">
+        <label for="email" id="emailLabel">Email address</label><br>
+        <input type="email" class="emailIns" placeholder="email@company.com">
+      </div>
+      <button class="subs">Subscribe to monthly newsletter</button>
+
+    </div>
+
+    <div class="svgInfo">
+      <img src="assets/images/illustration-sign-up-desktop.svg" alt="">
+    </div>
+    
+  </div>
+
+  
+
+  
+
+  <!-- Sign-up form end -->
+
+  <!-- Success message start -->
+
+  <div class="successMessage">
+    <img src="assets/images/icon-success.svg" alt="">
+    <h1>Thanks for subscribing!</h1>
+    <p>A confirmation email has been sent to ash@loremcompany.com. 
+      Please open it and click the button inside to confirm your subscription.
+    </p>
+    <button id="dismiss">Dismiss message</button>
+  </div>
+
+  <!-- Success message end -->
+  <script>
+    let container = document.querySelector('.container');
+    let successMessage = document.querySelector('.successMessage');
+    let subs = document.querySelector('.subs');
+    let dismiss = document.getElementById('dismiss');
+    let form = document.getElementsByClassName('form');
+    let emailInput = document.querySelector('input[type="email"]');
+    let errorMessage = document.createElement('div');
+    let emailLabel = document.getElementById('emailLabel');
+  
+    // Event listeners
+    subs.addEventListener('click', validateAndDisplayThanksMsg);
+    dismiss.addEventListener('click', dismissMsg);
+
+    emailInput.addEventListener('input', function () {
+      emailInput.classList.remove('errors');
+      emailInput.classList.add('emailIns')
+      errorMessage.textContent = '';
+    });
+  
+    function validateAndDisplayThanksMsg() {
+      let successMessageStyle = window.getComputedStyle(successMessage);
+  
+      // Validate email
+      if (!isValidEmail(emailInput.value)) {
+        displayErrorMessage("Valid Email Required");
+        emailInput.classList.add('errors');
+        emailInput.classList.remove('emailIns');
+        console.log(emailInput);
+        return;
+      }
+  
+      // Check if success message is already visible
+      if (successMessageStyle.display == 'none') 
+      {
+        successMessage.style.display = 'block';
+        container.style.display = 'none';
+      }
+  
+      // Reset error message if valid email
+      displayErrorMessage('');
+      emailInput.classList.remove('errors');
+      emailInput.classList.add('emailIns');
+      console.log('hello');
+    }
+  
+    function dismissMsg() {
+      successMessage.style.opacity = '0';
+  
+      setTimeout(function () {
+        successMessage.style.display = 'none';
+        container.style.display = 'flex';
+        successMessage.style.opacity = '1'; // Reset opacity for the next time
+      }, 500);
+    }
+  
+    function isValidEmail(email) {
+      // Basic email validation, you can enhance it as needed
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  
+    function displayErrorMessage(message) {
+      // Remove existing error message
+      if (errorMessage.parentNode) {
+        errorMessage.parentNode.removeChild(errorMessage);
+      }
+  
+      // Display new error message
+      errorMessage.textContent = message;
+      errorMessage.style.color = 'red';
+      errorMessage.style.display = 'inline';
+      errorMessage.style.float = 'right';
+      errorMessage.style.fontSize = '12px';
+      errorMessage.style.fontWeight = 'bold';
+      form[0].insertBefore(errorMessage, emailLabel.nextSibling);
+    }
+  </script>
+  
+  
+</body>
+</html>

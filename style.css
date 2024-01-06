@@ -1,0 +1,184 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: hsl(235, 18%, 26%);
+}
+
+.container {
+    border-radius: 18px;
+    position: relative;
+    display: flex;
+    background-color: white;
+    padding: 10px;
+}
+
+ul {
+    list-style-image: url(assets/images/icon-list.svg);
+}
+
+li
+{
+    padding-bottom: .5em;
+}
+
+.infoArea {
+    padding-top: 6em;
+    padding-left: 2em;
+    padding-right: 2em;
+    flex: 1;
+    transition: all 2s ease-in-out;
+}
+
+.infoArea h1 {
+    margin-bottom: 30px;
+    font-size: 50px;
+    font-weight: 700;
+    width: 100%;
+    animation: moveh1 2s;
+}
+
+@keyframes moveh1 {
+    from{
+        transform: translateX(-12px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+
+
+.infoArea p {
+    margin-bottom: 20px;
+    width: 100%;
+    animation: moveh1 3s;
+}
+
+.infoArea ul {
+    margin-left: 20px;
+    width: 100%;
+    animation: moveh1 3s;
+}
+
+.form {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    animation: moveh1 3s;
+}
+
+.form label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.emailIns {
+    width: 100%;
+    background-color: white;
+    margin-top: .5em;
+    padding-left: 10px;
+    padding-top: 15px;
+    border-top: 1px solid hsl(231, 7%, 60%);
+    border-left: 1px solid hsl(231, 7%, 60%);
+    border-right: 1px solid hsl(231, 7%, 60%);
+    border-bottom: 1px solid hsl(231, 7%, 60%);
+    padding-bottom: 15px;
+    border-radius: 5px;
+}
+
+.subs {
+    background-color: hsl(235, 18%, 26%);
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: moveh1 3s;
+}
+
+.subs:hover {
+    text-decoration: underline;
+    background-color: hsl(4, 100%, 67%);
+}
+@keyframes movesvg {
+    from{
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+.svgInfo{
+    flex: 1;
+    animation: movesvg 3s ease-in-out;
+    
+}
+
+.svgInfo img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.successMessage {
+    display: none;
+    border-radius: 15px;
+    padding-top: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+    max-width:360px;
+    background-color: white;
+}
+.successMessage img{
+    margin-bottom: 1em;
+}
+.successMessage h1{
+    word-spacing: 10px;
+    font-size: 50px;
+    margin-bottom: .5em;
+}
+.successMessage p{
+    margin-bottom: 1em;
+}
+.successMessage button {
+    padding: 10px;
+    color: white;
+    background-color: hsl(235, 18%, 26%);
+    margin-bottom: 1em;
+    width: 100%;
+    transition: all .4s ease-in-out;
+}
+
+.successMessage button:hover{
+    background-color: hsl(4, 100%, 67%);
+    cursor: pointer;
+}
+.errors {
+    width: 100%;
+    margin-top: .5em;
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    color:white;
+    border: 2px solid rgb(240, 121, 121);
+    background-color: rgb(247, 101, 101);
+}
+
+@media screen {
+    
+}
